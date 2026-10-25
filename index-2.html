@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lymfatické a komplexní masáže v centru Brna na Starobrněnské. Manuální lymfodrenáž, presoterapie a signaturní Rituál Proud.">
+<title>Studio Proud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Manrope:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Layout: asymmetric editorial grid; fluid 3D droplet anchors the hero, content flows down like a current */
+:root{
+  --bg:#EEF0EB;          /* porcelain with a sage bias */
+  --surface:#F7F8F4;
+  --ink:#12302C;         /* deep lagoon ink */
+  --muted:#5A6B66;
+  --line:rgba(18,48,44,.14);
+  --brass:#A3804B;       /* brushed brass accent */
+  --brass-soft:rgba(163,128,75,.14);
+  --silk-a:#1E4A44; --silk-b:#A3804B;
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --r:2px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1C1A;--surface:#132623;--ink:#E7ECE6;--muted:#9AABA5;--line:rgba(231,236,230,.13);
+  --brass:#C9A56C;--brass-soft:rgba(201,165,108,.14);
+  --silk-a:#5E9A8F;--silk-b:#D9B77B;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1C1A;--surface:#132623;--ink:#E7ECE6;--muted:#9AABA5;--line:rgba(231,236,230,.13);
+  --brass:#C9A56C;--brass-soft:rgba(201,165,108,.14);
+  --silk-a:#5E9A8F;--silk-b:#D9B77B;color-scheme:dark}
+
+*{box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.04}
+h2 em,h1 em{font-style:italic;color:var(--brass)}
+p{margin:0}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:16px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo b{font-family:var(--f-display);font-weight:500;font-size:1.6rem;letter-spacing:.02em}
+.logo span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:.9rem;color:var(--muted);transition:color .3s}
+.nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 .9rem var(--f-body);letter-spacing:.02em;text-decoration:none;border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:13px 22px;border-radius:999px;cursor:pointer;transition:transform .4s var(--ease),background .3s,color .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.btn svg{width:16px;height:16px}
+@media (max-width:860px){.nav ul{display:none}.btn.sm{padding:10px 16px;font-size:.82rem}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:20px;padding-block:clamp(48px,7vw,96px) clamp(40px,6vw,80px);min-height:min(760px,92svh)}
+.hero h1{font-size:clamp(3rem,8.2vw,7rem);line-height:.95;margin:22px 0 28px}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:inline-block;animation:rise 1.3s var(--ease) both}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .line:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero .lead{max-width:30rem;color:var(--muted);font-size:1.08rem;animation:fade 1.2s .45s var(--ease) both}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;animation:fade 1.2s .6s var(--ease) both}
+@keyframes fade{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
+.stage{position:relative;aspect-ratio:1/1;max-width:100%;width:100%}
+#blob{position:absolute;inset:-12% -18%;width:136%;height:124%;display:block;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
+.stage .ring{position:absolute;inset:6%;border:1px solid var(--line);border-radius:50%;pointer-events:none}
+.stage .ring.r2{inset:-2%;border-style:dashed;opacity:.6;animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stage .tag{position:absolute;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);padding:8px 12px;border-radius:999px;white-space:nowrap}
+.stage .t1{top:14%;left:2%}
+.stage .t2{bottom:16%;right:0}
+.stage .tag i{font-style:normal;color:var(--brass)}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:28px}
+  .stage{order:-1;max-width:420px;margin:0 auto;width:86%}
+}
+
+/* FACTS */
+.facts{border-block:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.fact{padding-block:34px;padding-inline:clamp(0px,2vw,28px);display:flex;flex-direction:column;gap:6px;min-width:0}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1;font-variant-numeric:lining-nums}
+.fact b small{font-family:var(--f-mono);font-size:.8rem;color:var(--brass);margin-left:6px;letter-spacing:.06em}
+.fact span{color:var(--muted);font-size:.92rem;max-width:22rem}
+@media (max-width:760px){.facts .wrap{grid-template-columns:1fr}.fact+.fact{border-left:0;border-top:1px solid var(--line)}.fact{padding-inline:0}}
+
+section{padding-block:clamp(72px,10vw,140px)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.head p{color:var(--muted);max-width:30rem;justify-self:end}
+@media (max-width:760px){.head{grid-template-columns:1fr}.head p{justify-self:start}}
+
+/* SERVICES — 3D tilt cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;perspective:1400px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(26px,3.4vw,44px);transform-style:preserve-3d;transition:transform .7s var(--ease),box-shadow .7s var(--ease);min-width:0;display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),var(--brass-soft),transparent 60%);opacity:0;transition:opacity .5s}
+.card:hover::after{opacity:1}
+.card:hover{box-shadow:0 40px 80px -40px rgba(18,48,44,.35)}
+.card .num{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.14em;transform:translateZ(30px)}
+.card h3{font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.08;transform:translateZ(50px)}
+.card p{color:var(--muted);transform:translateZ(24px)}
+.card ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;transform:translateZ(20px)}
+.card li{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted)}
+.card .price{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 28px;transform:translateZ(36px)}
+.card .price div{display:flex;flex-direction:column}
+.card .price small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.card .price strong{font-family:var(--f-display);font-weight:400;font-size:1.6rem;font-variant-numeric:tabular-nums lining-nums}
+.card.feature{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card.feature p,.card.feature li,.card.feature .num,.card.feature .price small{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.card.feature li,.card.feature .price{border-color:color-mix(in srgb,var(--bg) 18%,transparent)}
+.card.feature h3 em{color:var(--brass)}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+
+/* FLOW — lymph pathway */
+.flow{background:var(--surface);border-block:1px solid var(--line);position:relative;overflow:hidden}
+.flow .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.flow svg.body{width:100%;max-width:380px;height:auto;display:block;margin:0 auto}
+.flow .path{fill:none;stroke:var(--brass);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:4 10;animation:drain 2.8s linear infinite}
+.flow .sil{fill:none;stroke:var(--line);stroke-width:1.2}
+.flow .node{fill:var(--brass)}
+.flow .node.pulse{animation:pulse 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes drain{to{stroke-dashoffset:-56}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.8);opacity:.35}}
+.steps{display:flex;flex-direction:column;margin-top:36px}
+.step{display:grid;grid-template-columns:64px 1fr;gap:18px;padding-block:22px;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step b{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:1.9rem;color:var(--brass);line-height:1}
+.step h3{font-family:var(--f-body);font-weight:600;font-size:1.02rem;margin-bottom:4px}
+.step p{color:var(--muted);font-size:.95rem}
+.step .dur{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+@media (max-width:860px){.flow .grid{grid-template-columns:1fr}.flow svg.body{max-width:260px}}
+
+/* PACKAGES */
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r)}
+.pack{padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.pack+.pack{border-left:1px solid var(--line)}
+.pack .amount{font-family:var(--f-display);font-size:clamp(2.6rem,4.6vw,3.6rem);line-height:1;font-variant-numeric:tabular-nums lining-nums}
+.pack .amount small{font-family:var(--f-body);font-size:.95rem;color:var(--muted);margin-left:4px}
+.pack .save{align-self:flex-start;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;color:var(--brass);background:var(--brass-soft);padding:5px 10px;border-radius:999px}
+.pack p{color:var(--muted);font-size:.93rem}
+.pack.best{background:var(--brass-soft)}
+@media (max-width:860px){.packs{grid-template-columns:1fr}.pack+.pack{border-left:0;border-top:1px solid var(--line)}}
+
+/* CARE NOTE */
+.care{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,90px)}
+.care ul{list-style:none;margin:0;padding:0;columns:2;column-gap:32px}
+.care li{break-inside:avoid;padding:12px 0;border-top:1px solid var(--line);font-size:.95rem;display:flex;gap:12px}
+.care li::before{content:"";flex:none;width:6px;height:6px;margin-top:.62em;border-radius:50%;background:var(--brass)}
+.care .note{color:var(--muted);margin-top:22px;font-size:.92rem;max-width:34rem}
+@media (max-width:760px){.care{grid-template-columns:1fr}.care ul{columns:1}}
+
+/* BOOKING */
+.book{background:var(--ink);color:var(--bg);position:relative;overflow:hidden}
+.book .eyebrow{color:var(--brass)}
+.book .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,6vw,90px)}
+.book h2 em{color:var(--brass)}
+.info{display:flex;flex-direction:column;gap:26px;margin-top:40px}
+.info div{display:flex;flex-direction:column;gap:2px}
+.info small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 55%,transparent)}
+.info span{font-size:1.05rem;user-select:all}
+.info .hours{display:grid;grid-template-columns:auto auto;justify-content:start;gap:2px 28px;font-variant-numeric:tabular-nums}
+.info a{text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--bg) 30%,transparent);align-self:flex-start}
+form{background:color-mix(in srgb,var(--bg) 5%,transparent);border:1px solid color-mix(in srgb,var(--bg) 14%,transparent);border-radius:var(--r);padding:clamp(22px,3vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 60%,transparent)}
+.field input,.field select,.field textarea{font:400 1rem var(--f-body);color:var(--bg);background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--bg) 25%,transparent);padding:10px 0;border-radius:0;outline:none;transition:border-color .3s;width:100%;min-width:0;color-scheme:dark}
+.book{color-scheme:dark}
+.field select option{background:var(--ink);color:var(--bg)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brass)}
+.field textarea{resize:vertical;min-height:70px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{font:400 .88rem var(--f-body);letter-spacing:0;text-transform:none;color:var(--bg);border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);padding:8px 14px;border-radius:999px;cursor:pointer;transition:.3s;font-variant-numeric:tabular-nums}
+.chips input:checked+label{background:var(--brass);border-color:var(--brass);color:#14201E}
+.chips input:focus-visible+label{outline:2px solid var(--brass);outline-offset:2px}
+form .btn{grid-column:1/-1;justify-content:center;background:var(--brass);border-color:var(--brass);color:#14201E;margin-top:8px}
+.ok{grid-column:1/-1;border:1px solid var(--brass);border-radius:var(--r);padding:16px 18px;font-size:.95rem}
+.ok b{font-family:var(--f-display);font-weight:400;font-size:1.3rem;display:block;margin-bottom:4px}
+@media (max-width:860px){.book .grid{grid-template-columns:1fr}}
+@media (max-width:480px){form{grid-template-columns:1fr}}
+
+footer{padding-block:40px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--muted);font-size:.85rem}
+
+/* scroll reveal, from a visible resting state */
+@supports (animation-timeline:view()){
+  .rv{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 60%}
+  @keyframes reveal{from{opacity:.15;transform:translateY(40px)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<nav class="nav" aria-label="Hlavní navigace">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>Proud</b><span>Studio masáží · Brno</span></a>
+    <ul>
+      <li><a href="#procedury">Procedury</a></li>
+      <li><a href="#prubeh">Průběh</a></li>
+      <li><a href="#cenik">Permanentky</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn sm" href="#rezervace">Rezervovat</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Lymfatické &amp; komplexní masáže · Starobrněnská</div>
+      <h1>
+        <span class="line"><span>Lehkost,</span></span>
+        <span class="line"><span>která <em>proudí</em></span></span>
+        <span class="line"><span>tělem.</span></span>
+      </h1>
+      <p class="lead">Manuální lymfodrenáž, komplexní masáže a přístrojová presoterapie v klidném studiu v centru Brna. Pomalé, přesné ruce a čas jen pro vás.</p>
+      <div class="ctas">
+        <a class="btn" href="#rezervace">Rezervovat termín
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn ghost" href="#procedury">Prohlédnout procedury</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <canvas id="blob"></canvas>
+      <div class="tag t1"><i>●</i> 30–40 mmHg · jemný tlak</div>
+      <div class="tag t2">Metoda dle Dr. Voddera</div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>2–4<small>litry</small></b><span>lymfy denně projde tělem a vrací se do krevního oběhu.</span></div>
+    <div class="fact"><b>500–700<small>uzlin</small></b><span>filtruje tekutinu. Masáž ji vede právě k nim, krok za krokem.</span></div>
+    <div class="fact"><b>30–40<small>mmHg</small></b><span>tlak při lymfodrenáži. Jemnější než stisk ruky, a přesto účinný.</span></div>
+  </div>
+</div>
+
+<section id="procedury">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Procedury</div><h2>Čtyři způsoby, jak<br>tělu <em>ulevit</em></h2></div>
+      <p>Každé ošetření začíná krátkou konzultací. Podle ní zvolíme tlak, tempo i délku, aby masáž odpovídala tomu, co vaše tělo právě potřebuje.</p>
+    </div>
+    <div class="cards">
+      <article class="card rv" data-tilt>
+        <span class="num">LYMFODRENÁŽ · RUČNÍ</span>
+        <h3>Manuální lymfatická masáž</h3>
+        <p>Pomalé, rytmické tahy ve směru lymfatických cest. Uvolňuje otoky, zlehčuje nohy a podporuje regeneraci po sportu i po zákrocích.</p>
+        <ul><li>Těžké nohy</li><li>Otoky</li><li>Celulitida</li><li>Po operaci*</li></ul>
+        <div class="price"><div><small>60 min</small><strong>1 190 Kč</strong></div><div><small>90 min</small><strong>1 590 Kč</strong></div></div>
+      </article>
+      <article class="card rv" data-tilt>
+        <span class="num">CELÉ TĚLO</span>
+        <h3>Komplexní masáž</h3>
+        <p>Klasická masáž propojená s prvky reflexní terapie a jemnou mobilizací. Uvolní šíji, záda i kyčle a vrátí tělu přirozený pohyb.</p>
+        <ul><li>Ztuhlá záda</li><li>Sedavá práce</li><li>Stres</li><li>Únava</li></ul>
+        <div class="price"><div><small>60 min</small><strong>990 Kč</strong></div><div><small>90 min</small><strong>1 390 Kč</strong></div></div>
+      </article>
+      <article class="card rv" data-tilt>
+        <span class="num">PŘÍSTROJOVÁ</span>
+        <h3>Presoterapie</h3>
+        <p>Vzduchové manžety postupně stlačují nohy od kotníků nahoru. Ideální doplněk ruční lymfodrenáže nebo rychlá úleva po dlouhém stání.</p>
+        <ul><li>Doplněk kúry</li><li>Po letu</li><li>Regenerace</li></ul>
+        <div class="price"><div><small>45 min</small><strong>690 Kč</strong></div></div>
+      </article>
+      <article class="card feature rv" data-tilt>
+        <span class="num">SIGNATURNÍ RITUÁL</span>
+        <h3>Rituál <em>Proud</em></h3>
+        <p>Komplexní masáž zad a šíje, ruční lymfodrenáž celého těla a závěrečná presoterapie. Dvě hodiny, po kterých odcházíte lehčí.</p>
+        <ul><li>Nejoblíbenější</li><li>Dárkový poukaz</li></ul>
+        <div class="price"><div><small>120 min</small><strong>2 290 Kč</strong></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="prubeh">
+  <div class="wrap grid">
+    <svg class="body rv" viewBox="0 0 200 400" role="img" aria-label="Schéma lymfatických cest a hlavních uzlin">
+      <path class="sil" d="M100 18c14 0 24 11 24 26s-10 28-24 28-24-13-24-28 10-26 24-26zM78 78c-20 6-34 16-38 40l-12 88c-1 8 9 10 11 2l16-74 4 66-8 158c0 8 12 8 13 0l22-130 14 0 22 130c1 8 13 8 13 0l-8-158 4-66 16 74c2 8 12 6 11-2l-12-88c-4-24-18-34-38-40z"/>
+      <path class="path" d="M100 92v26M100 118l-28 4M100 118l28 4M72 122l-24 24M128 122l24 24M100 118v90M100 208l-18 22v120M100 208l18 22v120"/>
+      <circle class="node pulse" cx="100" cy="92" r="3.4"/>
+      <circle class="node pulse" cx="72" cy="122" r="3.2" style="animation-delay:.4s"/>
+      <circle class="node pulse" cx="128" cy="122" r="3.2" style="animation-delay:.4s"/>
+      <circle class="node pulse" cx="100" cy="208" r="3.6" style="animation-delay:.9s"/>
+      <circle class="node pulse" cx="82" cy="230" r="3.2" style="animation-delay:1.3s"/>
+      <circle class="node pulse" cx="118" cy="230" r="3.2" style="animation-delay:1.3s"/>
+      <circle class="node" cx="82" cy="300" r="2.2"/><circle class="node" cx="118" cy="300" r="2.2"/>
+    </svg>
+    <div>
+      <div class="eyebrow">Průběh návštěvy</div>
+      <h2>Lymfa se nedá<br><em>uspěchat</em></h2>
+      <div class="steps">
+        <div class="step rv"><b>i.</b><div><h3>Konzultace <span class="dur">· 10 min</span></h3><p>Probereme zdravotní stav, případné kontraindikace a co od masáže čekáte.</p></div></div>
+        <div class="step rv"><b>ii.</b><div><h3>Otevření uzlin</h3><p>Začínáme u krku a podklíčkových uzlin, aby měla tekutina kam odtékat.</p></div></div>
+        <div class="step rv"><b>iii.</b><div><h3>Vedení tekutiny</h3><p>Pomalými krouživými tahy vedeme lymfu od okrajů těla směrem k uzlinám.</p></div></div>
+        <div class="step rv"><b>iv.</b><div><h3>Doznění a doporučení</h3><p>Chvíle klidu, sklenice vody a tipy na pitný režim a pohyb do dalších dnů.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cenik">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">Permanentky</div><h2>Účinek, který<br><em>vydrží</em></h2></div>
+      <p>Lymfodrenáž funguje nejlépe v sérii. Doporučujeme 5 až 10 ošetření jednou až dvakrát týdně. Permanentka platí 6 měsíců.</p>
+    </div>
+    <div class="packs rv">
+      <div class="pack"><div class="eyebrow">Jednotlivě</div><div class="amount">1 190<small>Kč</small></div><p>Manuální lymfodrenáž 60 min. Vhodné na vyzkoušení.</p></div>
+      <div class="pack"><div class="eyebrow">Kúra 5×</div><div class="amount">5 490<small>Kč</small></div><span class="save">Ušetříte 460 Kč</span><p>Pět ošetření po 60 minutách. Znatelná úleva od otoků.</p></div>
+      <div class="pack best"><div class="eyebrow">Kúra 10×</div><div class="amount">10 490<small>Kč</small></div><span class="save">Ušetříte 1 410 Kč</span><p>Deset ošetření a k tomu dvě presoterapie zdarma.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap care">
+    <div class="rv">
+      <div class="eyebrow">Než přijdete</div>
+      <h2>Kdy masáž <em>odložit</em></h2>
+      <p class="note">Lymfodrenáž působí na celý oběh. Pokud se vás něco z uvedeného týká, ozvěte se nám předem. Ošetření po operaci provádíme se souhlasem lékaře.*</p>
+    </div>
+    <ul class="rv">
+      <li>Akutní zánět nebo horečka</li>
+      <li>Trombóza či podezření na ni</li>
+      <li>Nekompenzované srdeční selhání</li>
+      <li>Nediagnostikovaný nádor</li>
+      <li>Akutní kožní onemocnění</li>
+      <li>1. trimestr těhotenství</li>
+    </ul>
+  </div>
+</section>
+
+<section class="book" id="rezervace">
+  <div class="wrap grid">
+    <div id="kontakt">
+      <div class="eyebrow">Rezervace &amp; kontakt</div>
+      <h2>Váš čas<br>na <em>Starobrněnské</em></h2>
+      <div class="info">
+        <div><small>Adresa</small><span>Starobrněnská, 602 00 Brno-střed</span><a href="https://mapy.cz/zakladni?q=Starobrn%C4%9Bnsk%C3%A1%20Brno" target="_blank" rel="noopener">Otevřít v Mapy.cz</a></div>
+        <div><small>Telefon</small><span>+420 777 000 000</span></div>
+        <div><small>E-mail</small><span>studio@proud-brno.cz</span></div>
+        <div><small>Otevírací doba</small>
+          <div class="hours"><span>Po – Pá</span><span>8:00 – 20:00</span><span>Sobota</span><span>9:00 – 14:00</span><span>Neděle</span><span>zavřeno</span></div>
+        </div>
+      </div>
+    </div>
+    <form id="form" novalidate>
+      <div class="field"><label for="f-name">Jméno</label><input id="f-name" name="name" autocomplete="name" placeholder="Jana Nováková" required></div>
+      <div class="field"><label for="f-tel">Telefon</label><input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="+420 …" required></div>
+      <div class="field full"><label for="f-proc">Procedura</label>
+        <select id="f-proc" name="proc">
+          <option>Manuální lymfatická masáž · 60 min</option>
+          <option>Manuální lymfatická masáž · 90 min</option>
+          <option>Komplexní masáž · 60 min</option>
+          <option>Komplexní masáž · 90 min</option>
+          <option>Presoterapie · 45 min</option>
+          <option selected>Rituál Proud · 120 min</option>
+        </select></div>
+      <div class="field"><label for="f-date">Preferovaný den</label><input id="f-date" name="date" type="date"></div>
+      <div class="field full"><label>Čas</label>
+        <div class="chips" role="radiogroup" aria-label="Preferovaný čas">
+          <input type="radio" name="time" id="t1" value="8:00"><label for="t1">8:00</label>
+          <input type="radio" name="time" id="t2" value="10:30" checked><label for="t2">10:30</label>
+          <input type="radio" name="time" id="t3" value="13:00"><label for="t3">13:00</label>
+          <input type="radio" name="time" id="t4" value="15:30"><label for="t4">15:30</label>
+          <input type="radio" name="time" id="t5" value="18:00"><label for="t5">18:00</label>
+        </div></div>
+      <div class="field full"><label for="f-note">Poznámka</label><textarea id="f-note" name="note" placeholder="Např. otoky nohou po dlouhém stání"></textarea></div>
+      <button class="btn" type="submit">Odeslat žádost o termín</button>
+      <div class="ok" id="ok" hidden></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Studio Proud · Lymfatické a komplexní masáže, Brno</span>
+    <span>* Po operaci pouze se souhlasem ošetřujícího lékaře.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ---------- smooth scroll ---------- */
+(function(){
+  if(!window.Lenis||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const lenis=new Lenis({duration:1.35,easing:t=>1-Math.pow(1-t,4),wheelMultiplier:.9,smoothWheel:true});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+  const nav=document.querySelector('.nav');
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');const el=id.length>1&&document.querySelector(id);
+    if(!el&&id!=='#top')return;e.preventDefault();
+    lenis.scrollTo(el||0,{offset:-(nav?nav.offsetHeight:0),duration:1.6});
+  }));
+})();
+
+/* ---------- form ---------- */
+(function(){
+  const f=document.getElementById('form'),ok=document.getElementById('ok');
+  const d=document.getElementById('f-date');
+  const t=new Date();t.setDate(t.getDate()+2);d.value=t.toISOString().slice(0,10);d.min=new Date().toISOString().slice(0,10);
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const n=f.name.value.trim(),tel=f.tel.value.trim();
+    if(!n||!tel){ok.hidden=false;ok.innerHTML='<b>Chybí kontakt</b>Vyplňte prosím jméno a telefon, abychom vám mohli termín potvrdit.';return}
+    const day=d.value?new Date(d.value).toLocaleDateString('cs-CZ',{weekday:'long',day:'numeric',month:'long'}):'dle domluvy';
+    const time=(f.querySelector('input[name=time]:checked')||{}).value||'';
+    ok.hidden=false;
+    ok.innerHTML='<b>Děkujeme, '+n.split(' ')[0].replace(/[<>&]/g,'')+'</b>'+f.proc.value+' · '+day+' '+time+'. Termín vám potvrdíme telefonicky. <br><small style="opacity:.6">Ukázková verze webu: žádost se zatím nikam neodesílá.</small>';
+  });
+})();
+
+/* ---------- 3D tilt cards ---------- */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(hover: none)').matches)return;
+  document.querySelectorAll('[data-tilt]').forEach(c=>{
+    c.addEventListener('pointermove',e=>{
+      const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      c.style.transform=`rotateX(${(.5-y)*9}deg) rotateY(${(x-.5)*11}deg) translateZ(0)`;
+      c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');
+    });
+    c.addEventListener('pointerleave',()=>{c.style.transform=''});
+  });
+})();
+
+/* ---------- WebGL fluid droplet ---------- */
+(function(){
+  const canvas=document.getElementById('blob');
+  if(!window.THREE||!canvas)return;
+  let renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true})}catch(e){return}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(35,1,.1,100);cam.position.z=5.2;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const noise=`
+  vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+  vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-.85373472095314*r;}
+  float snoise(vec3 v){const vec2 C=vec2(1./6.,1./3.);const vec4 D=vec4(0.,.5,1.,2.);
+  vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.-g;
+  vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;
+  i=mod289(i);vec4 p=permute(permute(permute(i.z+vec4(0.,i1.z,i2.z,1.))+i.y+vec4(0.,i1.y,i2.y,1.))+i.x+vec4(0.,i1.x,i2.x,1.));
+  float n_=.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.*x_);
+  vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);
+  vec4 s0=floor(b0)*2.+1.;vec4 s1=floor(b1)*2.+1.;vec4 sh=-step(h,vec4(0.));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+  vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);
+  vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;
+  vec4 m=max(.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.);m=m*m;
+  return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}`;
+
+  const uniforms={uTime:{value:0},uMouse:{value:new THREE.Vector2()},
+    uA:{value:new THREE.Color()},uB:{value:new THREE.Color()},uC:{value:new THREE.Color()}};
+  /* silk current: fine lines forming a slow, folding sheet, with droplets travelling along it */
+  const field=`
+    uniform float uTime;uniform vec2 uMouse;
+    vec3 silk(float x,float l){
+      float t=uTime*.085;float z=(l-.5)*2.4;
+      float h=snoise(vec3(x*.34,z*.42,t))*.52+sin(x*.85+z*1.1+t*1.5)*.17+cos(x*.45-z*.7+t*.8)*.1;
+      h+=uMouse.y*.22*exp(-x*x*.35);
+      float zz=z+snoise(vec3(x*.24,z*.5,t+7.))*.24+uMouse.x*.12*sin(x);
+      return vec3(x,h+z*.18,zz);
+    }`;
+  const lineMat=new THREE.ShaderMaterial({uniforms,transparent:true,depthWrite:false,
+    vertexShader:noise+field+`
+      attribute float aLine;varying float vU;varying float vL;varying float vH;
+      void main(){vec3 p=silk(position.x,aLine);vH=p.y;vU=position.x/2.7;vL=aLine;
+        gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`,
+    fragmentShader:`
+      uniform vec3 uA;uniform vec3 uB;varying float vU;varying float vL;varying float vH;
+      void main(){
+        float edge=smoothstep(1.,.45,abs(vU));
+        float band=smoothstep(0.,.25,vL)*smoothstep(1.,.75,vL);
+        vec3 col=mix(uA,uB,smoothstep(-.35,.45,vH));
+        gl_FragColor=vec4(col,edge*(.18+.7*band));}`});
+  const group=new THREE.Group();
+  const LINES=reduce?42:72,SEG=360;
+  for(let i=0;i<LINES;i++){
+    const g=new THREE.BufferGeometry(),pos=new Float32Array(SEG*3),al=new Float32Array(SEG);
+    for(let s=0;s<SEG;s++){pos[s*3]=-2.7+5.4*s/(SEG-1);al[s]=i/(LINES-1)}
+    g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    g.setAttribute('aLine',new THREE.BufferAttribute(al,1));
+    g.boundingSphere=new THREE.Sphere(new THREE.Vector3(),4);
+    group.add(new THREE.Line(g,lineMat));
+  }
+  const DROPS=reduce?0:140,dg=new THREE.BufferGeometry(),dp=new Float32Array(DROPS*3),dl=new Float32Array(DROPS),ds=new Float32Array(DROPS);
+  for(let i=0;i<DROPS;i++){dp[i*3]=Math.random();dl[i]=Math.floor(Math.random()*LINES)/(LINES-1);ds[i]=.07+Math.random()*.16}
+  dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
+  dg.setAttribute('aLine',new THREE.BufferAttribute(dl,1));
+  dg.setAttribute('aSpeed',new THREE.BufferAttribute(ds,1));
+  dg.boundingSphere=new THREE.Sphere(new THREE.Vector3(),4);
+  const dropMat=new THREE.ShaderMaterial({uniforms,transparent:true,depthWrite:false,
+    vertexShader:noise+field+`
+      attribute float aLine;attribute float aSpeed;varying float vA;
+      void main(){float x=mod(position.x*5.4+uTime*aSpeed,5.4)-2.7;vec3 p=silk(x,aLine);
+        vA=smoothstep(2.7,1.6,abs(x));vec4 mv=modelViewMatrix*vec4(p,1.);
+        gl_PointSize=(2.+aSpeed*12.)*${Math.min(devicePixelRatio,2).toFixed(1)}*(4./-mv.z);
+        gl_Position=projectionMatrix*mv;}`,
+    fragmentShader:`
+      uniform vec3 uB;varying float vA;
+      void main(){float d=length(gl_PointCoord-.5);float a=smoothstep(.5,.0,d);
+        gl_FragColor=vec4(uB,a*a*vA*.9);}`});
+  if(DROPS)group.add(new THREE.Points(dg,dropMat));
+  group.scale.setScalar(.62);
+  group.rotation.set(-.42,-.35,.22);
+  scene.add(group);
+  
+
+  function readColors(){
+    const s=getComputedStyle(document.documentElement);
+    uniforms.uA.value.set(s.getPropertyValue('--silk-a').trim()||'#12302C');
+    uniforms.uB.value.set(s.getPropertyValue('--silk-b').trim()||'#A3804B');
+  }
+  readColors();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',readColors);
+  new MutationObserver(readColors).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  function size(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+  new ResizeObserver(size).observe(canvas);size();
+
+  const target=new THREE.Vector2();
+  addEventListener('pointermove',e=>{target.set((e.clientX/innerWidth-.5)*2,-(e.clientY/innerHeight-.5)*2)},{passive:true});
+
+  let visible=true;
+  new IntersectionObserver(([en])=>{visible=en.isIntersecting}).observe(canvas);
+  const clock=new THREE.Clock();
+  function frame(){
+    requestAnimationFrame(frame);
+    if(!visible)return;
+    const dt=Math.min(clock.getDelta(),.05);
+    uniforms.uTime.value+=reduce?0:dt;
+    uniforms.uMouse.value.lerp(target,1-Math.exp(-dt*1.2));
+    group.rotation.x=-.42+uniforms.uMouse.value.y*.12;
+    group.rotation.y=-.35+uniforms.uMouse.value.x*.18;
+    group.position.y=Math.sin(uniforms.uTime.value*.3)*.04;
+    renderer.render(scene,cam);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
